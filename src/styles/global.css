@@ -1,12 +1,7 @@
 /* Global site styles */
 body {
   font-family: system-ui, sans-serif;
-  background: radial-gradient(
-      circle at bottom,
-      rgba(255, 39, 41, 0.25) 0%,
-      rgba(0, 0, 0, 1) 80%
-    ),
-    #000;
+  background: black;
   color: #fff;
   margin: 0;
   padding: 0;
