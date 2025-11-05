@@ -176,7 +176,8 @@ import car from "../assets/car.png";
   
    /* Mobile tweaks */
 @media (max-width: 768px) {
-  .content { width: 94vw; }
+  .content { width: 94vw;
+  height: 100% }
   .title {
     /* Make text a little bigger but not huge */
     font-size: clamp(32px, 10vw, 72px);
@@ -189,24 +190,7 @@ import car from "../assets/car.png";
     transform: translateY(-5%);
   }
   .hero-img { width: 100%; }
-    .hero::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 40vh; /* how tall the glow extends upward */
-    background: radial-gradient(
-      ellipse at bottom,
-      rgba(255, 0, 0, 0.45) 25%,   /* bright red center */
-      rgba(255, 0, 0, 0.25) 25%,  /* fade upward */
-      rgba(0, 0, 0, 0.85) 90%     /* fade into background */
-    );
-    z-index: 0;
-    pointer-events: none;
-    filter: blur(60px); /* soft diffusion */
-    opacity: 0.8;
-  }
+
 }
 
 
