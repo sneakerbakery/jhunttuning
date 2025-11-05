@@ -9,7 +9,14 @@ import car from "../assets/car.png";
       <em>LS Tuning</em>
     </h1>
 
-    <img src={car.src} alt="Top Tier Tuning" class="hero-img" />
+   <div class="glitch-wrap" style={`--img: url(${car.src})`}>
+  <img src={car.src} alt="Top Tier Tuning" class="hero-img" />
+  <span class="gl-s gl-s1"></span>
+  <span class="gl-s gl-s2"></span>
+  <span class="gl-s gl-s3"></span>
+  <span class="gl-s gl-s4"></span>
+  <span class="gl-s gl-s5"></span>
+</div>
   </div>
     <div class="buttons">
      <button class="btn ghost" disabled>Sold Out</button>
@@ -36,13 +43,77 @@ import car from "../assets/car.png";
 }
 
 /* Image centered and responsive */
-.hero-img {
+/* Wrapper sits where your image was */
+.glitch-wrap {
   grid-area: 1 / 1;
-  justify-self: center;    /* centers even when width < 100% */
+  justify-self: center;
+  position: relative;
   width: clamp(320px, 70%, 1100px);
-  height: auto;
   z-index: 1;
+  display: block;
 }
+
+/* Base image (the “normal” layer) */
+.hero-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: contrast(1.05) brightness(1.05);
+  animation: imgGlitchBase 3.2s infinite steps(12);
+}
+
+/* Slices: reuse same image as background */
+.gl-s {
+  position: absolute;
+  inset: 0;
+  background-image: var(--img);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  mix-blend-mode: screen;
+  opacity: 0.85;
+  pointer-events: none;
+  /* each slice anim shifts horizontally */
+  animation: sliceShift 2.6s infinite steps(18);
+}
+
+/* Different clip bands + timings per slice */
+.gl-s1 { clip-path: inset( 8%  0 76% 0); animation-duration: 2.2s; transform: translateX(0); }
+.gl-s2 { clip-path: inset(28%  0 56% 0); animation-duration: 2.6s; }
+.gl-s3 { clip-path: inset(46%  0 38% 0); animation-duration: 2.0s; }
+.gl-s4 { clip-path: inset(62%  0 22% 0); animation-duration: 2.8s; }
+.gl-s5 { clip-path: inset(78%  0  6% 0); animation-duration: 2.4s; }
+
+/* subtle color splits per slice for that digital tear vibe */
+.gl-s1 { filter: hue-rotate(10deg)  saturate(1.15); }
+.gl-s2 { filter: hue-rotate(-10deg) saturate(1.1); }
+.gl-s3 { filter: none; }
+.gl-s4 { filter: hue-rotate(190deg) saturate(1.2); }
+.gl-s5 { filter: hue-rotate(320deg) saturate(1.2); }
+
+/* Base image tiny flicker */
+@keyframes imgGlitchBase {
+  0%, 92%, 100% { transform: none; filter: none; }
+  94% { transform: translate(-1px, 0.5px) skewX(0.2deg); }
+  96% { transform: translate(1px, -0.5px); }
+}
+
+/* Side-to-side slice motion (random-ish pattern) */
+@keyframes sliceShift {
+  0%   { transform: translateX(0);       opacity: 0.9; }
+  10%  { transform: translateX(-3px);    }
+  12%  { transform: translateX(3px);     }
+  20%  { transform: translateX(1px);     }
+  22%  { transform: translateX(-2px);    }
+  40%  { transform: translateX(0);       opacity: 0.85; }
+  55%  { transform: translateX(2px);     }
+  58%  { transform: translateX(-4px);    }
+  75%  { transform: translateX(0);       }
+  92%  { transform: translateX(6px);     opacity: 0.95; }
+  96%  { transform: translateX(-6px);    }
+  100% { transform: translateX(0);       opacity: 0.9; }
+}
+
 
 /* Title stays left, scales with viewport, wraps nicely */
 .title {
@@ -111,6 +182,10 @@ import car from "../assets/car.png";
     font-size: clamp(28px, 9vw, 64px);
   }
   .hero-img { width: 100%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-img, .gl-s { animation: none !important; transform: none !important; }
 }
   </style>
 </section>
