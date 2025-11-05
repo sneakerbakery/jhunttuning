@@ -176,34 +176,14 @@ import car from "../assets/car.png";
   
    /* Mobile tweaks */
 @media (max-width: 768px) {
-  .content {
-    width: 94vw;
-  }
-
+  .content { width: 94vw; }
   .title {
-    /* Make text a little bigger but not huge */
-    font-size: clamp(32px, 10vw, 72px);
-
-    /* Move it up and in a bit so it sits less over the image */
-    max-width: 65%;
-    padding-left: clamp(20px, 4vw, 36px);
-
-    /* Push the text slightly higher over the car */
-    transform: translateY(-5%);
+    max-width: 70%;        /* give more room on small screens */
+    font-size: clamp(28px, 9vw, 64px);
   }
-
-  .hero-img {
-    width: 100%;
-    margin-top: 3rem; /* creates extra space between text and image */
-  }
-
-  .buttons {
-    margin-top: clamp(16px, 4vh, 28px);
-  }
+  .hero-img { width: 100%; }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .hero-img, .gl-s { animation: none !important; transform: none !important; }
-}
+
   </style>
 </section>
