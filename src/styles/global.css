@@ -1,9 +1,22 @@
 /* Global site styles */
+
+html,
+body {
+  height: 100%;
+}
 body {
   font-family: system-ui, sans-serif;
   background: black;
   color: #fff;
   margin: 0;
   padding: 0;
-  min-height: 100vh;
+  margin: 0;
+  overflow-x: hidden;
+  box-sizing: border-box;
+
+  /* Fallback → modern → iOS */
+  min-height: 100vh; /* fallback for very old browsers */
+  min-height: 100svh; /* small viewport (when bars visible) */
+  min-height: 100dvh; /* dynamic viewport (modern fix) */
+  min-height: -webkit-fill-available; /* older iOS Safari */
 }
