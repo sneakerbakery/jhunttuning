@@ -1,0 +1,38 @@
+---
+import logo from "../assets/logo.svg";
+---
+
+<header>
+  <a href="/" class="logo-link">
+    <img src={logo.src ?? logo} alt="Site logo" class="logo-img" />
+  </a>
+ 
+
+  <style>
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 3rem;
+  
+    }
+
+    .logo-link {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+
+    .logo-img {
+      width: 150px; /* adjust size as you prefer */
+      height: auto;
+      display: block;
+    }
+
+    ul
+    {
+        
+        list-style: none;
+    }
+  </style>
+</header>

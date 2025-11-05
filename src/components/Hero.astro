@@ -1,0 +1,109 @@
+---
+import car from "../assets/car.png";
+---
+
+<section class="hero">
+  <div class="content">
+    <h1 class="title">
+      <span>Top Tier</span><br />
+      <em>Tuning</em>
+    </h1>
+
+    <img src={car.src} alt="Top Tier Tuning" class="hero-img" />
+  </div>
+    <div class="buttons">
+     <button class="btn ghost" disabled>Sold Out</button>
+      <a href="#waitlist" class="btn primary">Join Waitlist</a>
+     </div>
+
+  <style>
+   .hero {
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      max-height: 90%;
+    }
+
+    .content {
+      position: relative;
+      max-width: 1100px;
+      width: 70%;
+      text-align: left;
+     
+    }
+
+    .title {
+      position: absolute;
+      margin: 0;
+      color: #fff;
+      font-weight: 800;
+      line-height: 1;
+      font-size: clamp(42px, 7vw, 110px);
+      z-index: 2;
+      pointer-events: none;
+      text-shadow: 0 2px 0 rgba(0,0,0,.25);
+    }
+    .title em {
+      font-style: italic;
+    }
+
+    .hero-img {
+      margin-top:2rem;
+      width: 100%;
+      height: auto;
+      display: block;
+      
+    }
+
+       
+    .buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .btn {
+      padding: 0.75rem 1.75rem;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 1rem;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.15s ease, opacity 0.15s ease;
+      text-decoration: none;
+    }
+
+  .btn.primary {
+  background: linear-gradient(135deg, #FF2729, #000);
+  color: #fff;
+  border: outset #ff3333;
+  box-shadow: 0 4px 20px rgba(255, 39, 41, 0.4);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.btn.primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 30px rgba(255, 39, 41, 0.6);
+}
+
+    .btn.ghost {
+      background: #000;
+      color: #BBB;
+      cursor: not-allowed;
+      opacity: 0.8;
+    }
+
+  
+    @media (max-width: 768px) {
+      .title {
+        top: 1rem;
+        left: 1rem;
+        font-size: clamp(32px, 10vw, 64px);
+      }
+    }
+  </style>
+</section>
